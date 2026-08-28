@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://karikaasdasdqw2e.github.io/dj-karika-website/sitemap.xml
