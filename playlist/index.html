@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#090a0d" />
+    <meta
+      name="description"
+      content="اختاروا أغاني ليلة العمر وأرسلوا بلاي ليست فرحكم مباشرة إلى دي جي كاريكا."
+    />
+    <meta name="robots" content="index, follow" />
+    <title>بلاي ليست فرحك مع دي جي كاريكا</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23090a0d'/%3E%3Cpath d='M39 13v27.5a10 10 0 1 1-5-8.66V20l18-4v20.5a10 10 0 1 1-5-8.66V13.9L39 15.7V13Z' fill='%23e8b85c'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="دي جي كاريكا - أعلى الصفحة">
+        <span class="brand-mark" aria-hidden="true">K</span>
+        <span class="brand-copy">
+          <strong>DJ KARIKA</strong>
+          <small>WEDDING EXPERIENCE</small>
+        </span>
+      </a>
+      <a class="topbar-link" href="#playlist-form">اختياراتكم</a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="eyebrow"><span></span> تفاصيل صغيرة.. ليلة كبيرة</div>
+        <h1 id="page-title">
+          بلاي ليست فرحك
+          <span>مع دي جي كاريكا</span>
+        </h1>
+        <p>
+          يومكم مهم جدًا بالنسبة لينا، وعايزين نطلّعه بأفضل شكل ممكن.
+          اختاروا الأغاني اللي بتحبوها وإحنا هنرتّب موسيقى الليلة على ذوقكم.
+        </p>
+
+        <div class="hero-note">
+          <span class="note-icon" aria-hidden="true">♫</span>
+          <div>
+            <strong>دي ليلة العمر.. وصوتها لازم يشبهكم</strong>
+            <small>امْلوا الاختيارات براحتكم، وفي الآخر هتتبعت جاهزة على واتساب.</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-wrap" id="playlist-form" aria-labelledby="form-title">
+        <div class="form-heading">
+          <div>
+            <span class="section-kicker">ابدأوا من هنا</span>
+            <h2 id="form-title">احكولنا الليلة بتاعتكم</h2>
+          </div>
+          <span class="time-pill">حوالي ٤ دقايق</span>
+        </div>
+
+        <div class="progress-box" aria-live="polite">
+          <div class="progress-copy">
+            <span>اكتمال الاختيارات</span>
+            <strong id="progressText">٠٪</strong>
+          </div>
+          <div
+            class="progress-track"
+            role="progressbar"
+            aria-label="نسبة اكتمال الفورم"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <span id="progressBar"></span>
+          </div>
+        </div>
+
+        <form id="weddingPlaylistForm" novalidate>
+          <section class="form-card details-card" aria-labelledby="details-title">
+            <div class="card-title-row">
+              <span class="card-number">01</span>
+              <div>
+                <h3 id="details-title">بيانات الفرح</h3>
+                <p>علشان نجهّز كل حاجة باسمكم وفي ميعادكم.</p>
+              </div>
+            </div>
+
+            <div class="fields-grid">
+              <div class="field">
+                <label for="groomName">اسم العريس <span>*</span></label>
+                <input
+                  id="groomName"
+                  name="groomName"
+                  type="text"
+                  autocomplete="name"
+                  placeholder="مثال: محمد"
+                  required
+                />
+              </div>
+
+              <div class="field">
+                <label for="brideName">اسم العروسة <span>*</span></label>
+                <input
+                  id="brideName"
+                  name="brideName"
+                  type="text"
+                  placeholder="مثال: نور"
+                  required
+                />
+              </div>
+
+              <div class="field">
+                <label for="phone">رقم التواصل <span>*</span></label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  inputmode="tel"
+                  autocomplete="tel"
+                  placeholder="01xxxxxxxxx"
+                  minlength="10"
+                  aria-describedby="phoneError"
+                  required
+                />
+                <small class="field-error" id="phoneError"></small>
+              </div>
+
+              <div class="field">
+                <label for="weddingDate">تاريخ الفرح <span>*</span></label>
+                <input id="weddingDate" name="weddingDate" type="date" required />
+              </div>
+
+              <div class="field">
+                <label for="venue">القاعة أو مكان الفرح <span>*</span></label>
+                <input
+                  id="venue"
+                  name="venue"
+                  type="text"
+                  placeholder="اسم القاعة أو المكان"
+                  required
+                />
+              </div>
+
+              <div class="field">
+                <label for="city">البلد / المدينة</label>
+                <input id="city" name="city" type="text" placeholder="مثال: شبين الكوم" />
+              </div>
+            </div>
+          </section>
+
+          <section class="form-card music-card" aria-labelledby="zaffa-title">
+            <div class="card-title-row">
+              <span class="card-number">02</span>
+              <div>
+                <span class="music-type">لحظة الدخول</span>
+                <h3 id="zaffa-title">أكتر ٢ زفّة بتحبوهم</h3>
+                <p>اختاروا الزفات اللي تتمنّوا تبدأ بيها ليلتكم.</p>
+              </div>
+            </div>
+            <div class="song-grid two">
+              <div class="field song-field">
+                <label for="zaffa1">الزفة الأولى <span>*</span></label>
+                <input id="zaffa1" name="zaffa1" type="text" placeholder="اسم الزفة أو المطرب" required />
+              </div>
+              <div class="field song-field">
+                <label for="zaffa2">الزفة الثانية <span>*</span></label>
+                <input id="zaffa2" name="zaffa2" type="text" placeholder="اسم الزفة أو المطرب" required />
+              </div>
+            </div>
+          </section>
+
+          <section class="form-card music-card" aria-labelledby="slow-title">
+            <div class="card-title-row">
+              <span class="card-number">03</span>
+              <div>
+                <span class="music-type">الرقصة الأولى</span>
+                <h3 id="slow-title">أكتر ٢ أغنية رقص سلو</h3>
+                <p>الأغاني اللي تحبّوا تعيشوا معاها أهدى لحظات الليلة.</p>
+              </div>
+            </div>
+            <div class="song-grid two">
+              <div class="field song-field">
+                <label for="slow1">أغنية السلو الأولى <span>*</span></label>
+                <input id="slow1" name="slow1" type="text" placeholder="اسم الأغنية أو المطرب" required />
+              </div>
+              <div class="field song-field">
+                <label for="slow2">أغنية السلو الثانية <span>*</span></label>
+                <input id="slow2" name="slow2" type="text" placeholder="اسم الأغنية أو المطرب" required />
+              </div>
+            </div>
+          </section>
+
+          <section class="form-card music-card" aria-labelledby="classic-title">
+            <div class="card-title-row">
+              <span class="card-number">04</span>
+              <div>
+                <span class="music-type">ذكرياتكم الحلوة</span>
+                <h3 id="classic-title">أفضل ٣ أغاني كلاسيك</h3>
+                <p>اختيارات عايشة معاكم ومابتقدمش.</p>
+              </div>
+            </div>
+            <div class="song-grid">
+              <div class="field song-field">
+                <label for="classic1">الكلاسيك الأولى <span>*</span></label>
+                <input id="classic1" name="classic1" type="text" placeholder="اسم الأغنية أو المطرب" required />
+              </div>
+              <div class="field song-field">
+                <label for="classic2">الكلاسيك الثانية <span>*</span></label>
+                <input id="classic2" name="classic2" type="text" placeholder="اسم الأغنية أو المطرب" required />
+              </div>
+              <div class="field song-field full-last">
+                <label for="classic3">الكلاسيك الثالثة <span>*</span></label>
+                <input id="classic3" name="classic3" type="text" placeholder="اسم الأغنية أو المطرب" required />
+              </div>
+            </div>
+          </section>
+
+          <section class="form-card music-card energetic" aria-labelledby="mahragan-title">
+            <div class="card-title-row">
+              <span class="card-number">05</span>
+              <div>
+                <span class="music-type">وقت الحماس</span>
+                <h3 id="mahragan-title">أكتر ٥ مهرجانات بتحبوهم</h3>
+                <p>الحاجات اللي أول ما تشتغل محدش يفضل قاعد.</p>
+              </div>
+            </div>
+            <div class="song-grid">
+              <div class="field song-field"><label for="mahragan1">المهرجان الأول <span>*</span></label><input id="mahragan1" name="mahragan1" type="text" placeholder="اسم المهرجان أو المطرب" required /></div>
+              <div class="field song-field"><label for="mahragan2">المهرجان الثاني <span>*</span></label><input id="mahragan2" name="mahragan2" type="text" placeholder="اسم المهرجان أو المطرب" required /></div>
+              <div class="field song-field"><label for="mahragan3">المهرجان الثالث <span>*</span></label><input id="mahragan3" name="mahragan3" type="text" placeholder="اسم المهرجان أو المطرب" required /></div>
+              <div class="field song-field"><label for="mahragan4">المهرجان الرابع <span>*</span></label><input id="mahragan4" name="mahragan4" type="text" placeholder="اسم المهرجان أو المطرب" required /></div>
+              <div class="field song-field full-last"><label for="mahragan5">المهرجان الخامس <span>*</span></label><input id="mahragan5" name="mahragan5" type="text" placeholder="اسم المهرجان أو المطرب" required /></div>
+            </div>
+          </section>
+
+          <section class="form-card music-card" aria-labelledby="shaabi-title">
+            <div class="card-title-row">
+              <span class="card-number">06</span>
+              <div>
+                <span class="music-type">مزاج الفرح</span>
+                <h3 id="shaabi-title">أكتر ٥ أغاني شعبي بتحبوهم</h3>
+                <p>الشعبي اللي لازم يكون حاضر في فرحكم.</p>
+              </div>
+            </div>
+            <div class="song-grid">
+              <div class="field song-field"><label for="shaabi1">الأغنية الأولى <span>*</span></label><input id="shaabi1" name="shaabi1" type="text" placeholder="اسم الأغنية أو المطرب" required /></div>
+              <div class="field song-field"><label for="shaabi2">الأغنية الثانية <span>*</span></label><input id="shaabi2" name="shaabi2" type="text" placeholder="اسم الأغنية أو المطرب" required /></div>
+              <div class="field song-field"><label for="shaabi3">الأغنية الثالثة <span>*</span></label><input id="shaabi3" name="shaabi3" type="text" placeholder="اسم الأغنية أو المطرب" required /></div>
+              <div class="field song-field"><label for="shaabi4">الأغنية الرابعة <span>*</span></label><input id="shaabi4" name="shaabi4" type="text" placeholder="اسم الأغنية أو المطرب" required /></div>
+              <div class="field song-field full-last"><label for="shaabi5">الأغنية الخامسة <span>*</span></label><input id="shaabi5" name="shaabi5" type="text" placeholder="اسم الأغنية أو المطرب" required /></div>
+            </div>
+          </section>
+
+          <section class="form-card final-card" aria-labelledby="notes-title">
+            <div class="card-title-row">
+              <span class="card-number">07</span>
+              <div>
+                <h3 id="notes-title">في حاجة تانية تحبّوا تقولوهالنا؟</h3>
+                <p>طلبات خاصة، أغنية ممنوعة، مفاجأة، أو أي تفصيلة تفرق معاكم.</p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="notes">ملاحظات إضافية</label>
+              <textarea id="notes" name="notes" rows="4" placeholder="اكتبوا أي تفاصيل إضافية هنا..."></textarea>
+            </div>
+          </section>
+
+          <div class="submit-area">
+            <p class="privacy-note">
+              <span aria-hidden="true">◈</span>
+              بياناتكم مش بتتخزن على الموقع؛ هتتفتح في رسالة واتساب جاهزة تراجعوها قبل الإرسال.
+            </p>
+            <button class="whatsapp-button" type="submit">
+              <span class="whatsapp-badge" aria-hidden="true">✓</span>
+              <span>
+                <strong>ابعت اختياراتنا على واتساب</strong>
+                <small>إلى دي جي كاريكا</small>
+              </span>
+              <span class="button-arrow" aria-hidden="true">←</span>
+            </button>
+            <div class="submit-status" id="submitStatus" role="status" aria-live="polite"></div>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <span class="footer-note" aria-hidden="true">♫</span>
+      <p>ليلتكم بذوقكم — <strong>DJ KARIKA</strong></p>
+      <small>كل تفصيلة موسيقية محسوبة علشان فرحتكم تفضل في الذاكرة.</small>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
