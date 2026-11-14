@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KARIKA Arabic Pro — لوحة إصدار السريالات</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#13171d;color:#f9f7f0;font:17px/1.7 Tahoma,Arial,sans-serif}main{width:min(92%,720px);margin:48px auto 72px}h1{font-size:clamp(28px,7vw,50px);line-height:1.18;margin:0 0 12px;color:#ffc96f}h2{font-size:23px;margin:0 0 10px}section,details{padding:24px;border:1px solid #414650;border-radius:14px;margin-top:18px;background:#1a2029}p{margin:8px 0}label{display:block;margin-top:14px}input,textarea{width:100%;padding:10px 12px;background:#101319;color:white;border:1px solid #626a77;border-radius:7px;font:inherit}input[type=file]{font-size:14px}button,.action{display:inline-block;background:#ffc96f;color:#201606;border:0;border-radius:7px;padding:9px 15px;margin-top:12px;font:inherit;font-weight:bold;text-decoration:none;cursor:pointer}summary{cursor:pointer;font-weight:bold}.note{color:#c7cbd2;font-size:14px}output{display:block;margin:8px 0;min-height:1.4em}textarea{min-height:95px;overflow-wrap:anywhere}.price{font-size:30px;font-weight:bold;color:#ffc96f}
+</style>
+<main>
+<h1 dir="ltr">KARIKA Arabic Pro</h1>
+<p>لوحة إصدار تفعيل دائم لجهاز واحد. سعر الإضافة ١٠٠ جنيه، والتحويل عبر InstaPay أو محفظة على 01117875586.</p>
+
+<details open>
+<summary>إصدار السريالات لصاحب الإضافة</summary>
+<p class="note">تأكد من التحويل قبل إصدار السريال. استخدم نسختك المحلية من الصفحة لو عايز تولّد السريالات من غير اتصال. نزّل الصفحة وافتح النسخة المحلية عند استخدام مفتاح البيع.</p>
+<label for="device">كود جهاز العميل</label><input id="device" dir="ltr" maxlength="40" autocomplete="off">
+<label for="key">ملف المفتاح الخاص بصاحب الإضافة</label><input id="key" type="file" accept=".pem">
+<button id="sign">توليد السريال</button>
+<label for="serial">السريال</label><textarea id="serial" dir="ltr" readonly></textarea>
+<button id="copy">نسخ السريال</button>
+<output id="status" aria-live="polite"></output>
+</details>
+</main>
+<script>
+const get=id=>document.getElementById(id);
+const clean=value=>value.trim().replace(/[ -]/g,'').toUpperCase();
+get('sign').addEventListener('click',async()=>{
+ get('serial').value='';
+ get('status').textContent='';
+ try{
+  const device=clean(get('device').value);
+  if(!/^[A-F0-9]{32}$/.test(device)) throw Error('كود الجهاز لازم يكون ٣٢ خانة من 0–9 وA–F.');
+  const file=get('key').files[0];
+  if(!file) throw Error('اختار ملف المفتاح الخاص.');
+  if(!globalThis.crypto?.subtle) throw Error('افتح الصفحة من Chrome أو Edge.');
+  const body=(await file.text()).replace(/-----[^-]+-----/g,'').replace(/\s+/g,'');
+  const key=await crypto.subtle.importKey('pkcs8',Uint8Array.from(atob(body),c=>c.charCodeAt(0)),{name:'ECDSA',namedCurve:'P-256'},false,['sign']);
+  const derived=await crypto.subtle.sign({name:'ECDSA',hash:'SHA-256'},key,new TextEncoder().encode('KARIKA-ARABIC-PRO-V1:'+device));
+  const publicKey=await crypto.subtle.importKey('jwk',{"kty":"EC","x":"DKFv0RZSMf8tx5WnA2K0SYzE7djA26twhAVhiT7omRE","y":"zyjGtH1Z9loRHjOH_JtZUHJdUtdJtsOoiWFdpXiFu8w","crv":"P-256"},{name:'ECDSA',namedCurve:'P-256'},false,['verify']);
+  if(!await crypto.subtle.verify({name:'ECDSA',hash:'SHA-256'},publicKey,derived,new TextEncoder().encode('KARIKA-ARABIC-PRO-V1:'+device))) throw Error('المفتاح ده تابع لنسخة تانية.');
+  get('serial').value=Array.from(new Uint8Array(derived),b=>b.toString(16).padStart(2,'0')).join('').toUpperCase();
+  get('status').textContent='السريال جاهز.';
+ }catch(e){get('status').textContent=e.message;}
+ finally{get('key').value='';}
+});
+get('copy').addEventListener('click',async()=>{
+ const serial=get('serial');
+ if(!serial.value) return;
+ try{await navigator.clipboard.writeText(serial.value);get('status').textContent='اتنسخ السريال.';}
+ catch{serial.focus();serial.select();get('status').textContent='دوس Ctrl+C عشان تنسخ السريال.';}
+});
+</script>
+</html>
