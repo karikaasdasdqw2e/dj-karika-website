@@ -1,6 +1,8 @@
 # DJ KARIKA Party Planning Website
 
-موقع رسمي responsive لـ **DJ KARIKA Party Planning**. مناسب للموبايل والتابلت والكمبيوتر.
+الموقع الرسمي لـ **محمد كاريكا (DJ KARIKA)، بلاير دي جي ضمن مؤسسة «دي جي عصام كاريكا» في شبين الكوم، المنوفية**
+
+الموقع يجمع أعماله الموسيقية وخدمات الحجز وتنظيم الأفراح التابعة للمؤسسة.
 
 ## يشمل
 - Showreel في الرئيسية يعمل تلقائيًا بدون صوت وفق سياسات المتصفح.
@@ -17,10 +19,15 @@
 
 ## GitHub Pages
 من إعدادات الريبو: **Settings → Pages → Deploy from a branch → main → /(root) → Save**.
-بعد دقائق يصبح الموقع متاحًا من رابط GitHub Pages الذي يظهر في نفس الصفحة.
+الدومين المرتبط بالموقع هو [djkarika.com](https://djkarika.com/).
 
 ## التواصل
 - WhatsApp: 01114880069
-- Facebook: https://www.facebook.com/DJkarika.official
+- فيسبوك مؤسسة دي جي عصام كاريكا: https://www.facebook.com/DJkarika.official
 - TikTok: https://www.tiktok.com/@djkarikaa
 - Instagram: https://www.instagram.com/djkarikaa/
+
+## الموسيقى
+- [Spotify](https://open.spotify.com/artist/6NXAzBot5uh0a2Ew6oFniL)
+- [YouTube Music](https://music.youtube.com/channel/UCfZITdNbker9okNqPh7XpNA)
+- [Apple Music](https://music.apple.com/eg/artist/dj-karika/1796029945?l=ar)
