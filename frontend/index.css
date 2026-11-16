@@ -203,3 +203,55 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--acid);outline-offse
     color:#fff1de;font-size:10px;font-weight:800}
   .visual[data-profile] .portrait-hint{display:none}
 }
+
+/* Keep the approved photograph and the interactive controls in separate layers. */
+.hero-copy,.hero-foot{margin-left:0;margin-right:auto}
+.hero-copy{padding-top:10px}
+.hero-copy h1{font-size:clamp(62px,8.4vw,150px);line-height:.87}
+.hero-foot{padding-bottom:29px}
+.visual{top:10svh;right:13%;bottom:auto;width:min(72vw,142svh,1250px);aspect-ratio:1020/548}
+.portrait-halo{display:none}
+.approved-portrait{position:absolute;inset:0;display:block;overflow:hidden;pointer-events:none;
+  mask-image:linear-gradient(to right,transparent,#000 10%,#000 93%,transparent),linear-gradient(to bottom,transparent,#000 6%,#000 72%,transparent);mask-composite:intersect}
+.approved-portrait img{position:absolute;display:block;width:155.39%;max-width:none;height:auto;left:-28.43%;top:-16.42%}
+.portrait-control{pointer-events:none}
+.portrait-hit,.portrait-socials{pointer-events:auto}
+.portrait-essam{--face-left:27%}
+.portrait-mohamed{--face-left:64%}
+.portrait-hit{top:3%;width:30%;height:78%}
+.portrait-essam .portrait-socials{left:-2%}
+.portrait-mohamed .portrait-socials{right:-12%}
+.gold-logo{width:clamp(150px,23vw,390px);right:5%;bottom:2.5%;z-index:4;pointer-events:none}
+.hero-actions .music-trigger{position:static;inset:auto;min-height:46px;padding-inline:13px}
+@media(min-width:901px) and (orientation:landscape){
+  .hero-names{text-align:left}
+}
+@media(max-width:900px), (orientation:portrait){
+  .visual{top:auto;right:auto;width:min(100%,620px);aspect-ratio:941/650;margin:12px auto 0}
+  .approved-portrait{bottom:8%;mask-image:linear-gradient(to bottom,transparent,#000 5%,#000 78%,transparent)}
+  .approved-portrait img{width:100%;left:0;top:-32.55%}
+  .portrait-essam{--face-left:7%}
+  .portrait-mohamed{--face-left:53%}
+  .portrait-hit{height:78%;width:39%}
+  .portrait-socials,.portrait-essam .portrait-socials,.portrait-mohamed .portrait-socials{inset:auto 4% 0}
+  .gold-logo{width:clamp(137px,48vw,240px);order:-1;position:relative;right:auto;bottom:auto;margin:5px auto 0}
+  .hero-copy{padding-top:4px}
+  .hero-copy h1{font-size:clamp(49px,12vw,86px)}
+  .hero-actions{gap:6px}
+  .hero-actions .music-trigger{min-height:44px;padding-inline:7px}
+  .hero{padding-bottom:29px}
+}
+@media(max-height:570px) and (min-width:901px) and (orientation:landscape){.hero-copy h1{font-size:clamp(42px,12.5svh,85px)}}
+
+.hero-copy h1 .mobile-heading-word{display:none}
+.hero-copy h1 .desktop-heading-word{display:inline}
+@media(max-width:900px), (orientation:portrait){
+  .hero-copy h1{font-size:clamp(48px,16vw,101px)}
+  .hero-copy h1 .mobile-heading-word{display:inline}
+  .hero-copy h1 .desktop-heading-word{display:none}
+}
+@media(max-width:480px) and (min-height:730px){
+  .visual{margin-top:25px}
+  .hero-copy{padding-top:10px}
+  .hero-foot{padding-top:15px}
+}

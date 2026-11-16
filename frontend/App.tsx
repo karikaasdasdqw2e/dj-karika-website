@@ -173,7 +173,7 @@ function App() {
       <div className="hero-copy relative z-10 px-6 sm:px-10 lg:px-16" dir="ltr">
         <p className="hero-kicker animate-fade-up" dir="rtl">صوت · إضاءة · تنظيم حفلات</p>
         <h1 className="font-podium animate-fade-up-delay-1" aria-label="FEEL THE BEAT">
-          <span>FEEL</span><span>THE BEAT</span>
+          <span>FEEL<span className="mobile-heading-word"> THE</span></span><span><span className="desktop-heading-word">THE </span>BEAT</span>
         </h1>
         <p className="hero-names animate-fade-up-delay-2" dir="rtl">عصام كاريكا ومحمد كاريكا مع فريق الكتيبة</p>
       </div>
@@ -188,7 +188,10 @@ function App() {
           if (event.key === 'Escape') setActiveProfile(null);
         }}>
         <div className="portrait-halo" aria-hidden="true" />
-        <img className="duo" src="./assets/karika-duo.webp" width="900" height="600" alt="" fetchPriority="high" />
+        <picture className="approved-portrait" aria-hidden="true">
+          <source media="(max-width: 900px), (orientation: portrait)" srcSet="./assets/karika-preview-mobile.webp" />
+          <img src="./assets/karika-preview-desktop.webp" alt="" width="1585" height="992" fetchPriority="high" />
+        </picture>
         {profiles.map(profile => (
           <div className={'portrait-control portrait-' + profile.id} key={profile.id}>
             <button className="portrait-hit" type="button" aria-label={'روابط ' + profile.name}
@@ -196,7 +199,7 @@ function App() {
               onPointerEnter={event => { if (event.pointerType === 'mouse') setActiveProfile(profile.id); }}
               onFocus={event => { if (event.currentTarget.matches(':focus-visible')) setActiveProfile(profile.id); }}
               onClick={event => {
-                if (event.detail === 0) setActiveProfile(profile.id);
+                if (event.detail === 0 || (event.nativeEvent as PointerEvent).pointerType === 'mouse') setActiveProfile(profile.id);
                 else setActiveProfile(current => current === profile.id ? null : profile.id);
               }}><span className="portrait-hint">{profile.name}</span></button>
             <div className="portrait-socials" id={'profile-' + profile.id} hidden={activeProfile !== profile.id}>
@@ -208,23 +211,23 @@ function App() {
             </div>
           </div>
         ))}
-        <img className="gold-logo" src="./assets/karika-gold-logo.webp" alt="Karika Party Planning" />
       </div>
+      <img className="gold-logo" src="./assets/karika-gold-logo.webp" alt="Karika Party Planning" />
       <div className="hero-foot relative z-10 px-6 pb-6 sm:px-10 lg:px-16 lg:pb-8" dir="ltr">
         <div className="hero-actions animate-fade-up-delay-3">
           <a className="action action-primary" href={bookingUrl} target="_blank" rel="noopener noreferrer" dir="rtl">
             احجز على واتساب <ArrowUpRight size={18} aria-hidden="true" />
           </a>
-          <a className="action action-outline" href="./work/" dir="rtl">شوف أعمالنا</a>
+          <a className="action action-outline" href="./work/" dir="rtl">الأعمال</a>
+      <button ref={musicButton} className="music-trigger" type="button" aria-controls="music-player"
+        aria-expanded={musicOpen} onClick={() => musicOpen ? closeMusic() : setMusicMode('manual')}>
+        <Music2 size={16} aria-hidden="true" /> {musicOpen ? 'إغلاق المزيكا' : 'شغّل المزيكا'}
+      </button>
         </div>
         <a className="playlist animate-fade-up-delay-4" href="./playlist/" dir="rtl">
           <Music2 size={17} aria-hidden="true" /> بلاي ليست فرحك <span aria-hidden="true" />
         </a>
       </div>
-      <button ref={musicButton} className="music-trigger" type="button" aria-controls="music-player"
-        aria-expanded={musicOpen} onClick={() => musicOpen ? closeMusic() : setMusicMode('manual')}>
-        <Music2 size={16} aria-hidden="true" /> {musicOpen ? 'إغلاق المزيكا' : 'شغّل المزيكا'}
-      </button>
       {musicOpen && (
         <aside className="music-player" id="music-player" aria-label="مشغّل المزيكا">
           <div className="music-heading">
