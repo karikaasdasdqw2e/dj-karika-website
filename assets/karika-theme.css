@@ -1,0 +1,23 @@
+:root{--bg:#0a0d11;--bg2:#14191f;--text:#f8fafb;--muted:#b9c2cb;--gold:#d7fa50;--gold2:#d7fa50;--line:#ffffff2b;--gold-bright:#d7fa50;--gold-soft:#d7fa5023}
+body{font-family:Cairo,Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
+.karika-wordmark{display:inline-block;white-space:nowrap;font:800 clamp(26px,3.3vw,39px)/1 "FSP DEMO - PODIUM Sharp 4.11","Barlow Condensed","Arial Narrow",Impact,sans-serif;letter-spacing:.01em;color:#fff}
+.site-header,.site-header .nav,.site-header .menu{background:#10141a}
+.site-header .nav-cta{border-color:#d7fa5080;color:var(--gold);border-radius:0}
+.site-header .nav-cta:hover{background:var(--gold);color:#111508}
+.work,.follow,.services,.booking{background:radial-gradient(ellipse at 92% 2%,#1e2924,transparent 48%),#0a0d11}
+.section h1,.section h2{letter-spacing:0;color:#f8fafb}
+.kicker,.section h1 em,.section h2 em{color:var(--gold)}
+.kicker::before{background:var(--gold);box-shadow:0 0 0 4px #d7fa5023}
+.primary{background:var(--gold);color:#131809}
+.section .btn,.nav-cta,.topbar-link,.karika-playlist .submit-button{border-radius:0}
+.card,.service,.social,.form{border-color:var(--line)}
+.card:hover,.service:hover,.social:hover,.modal{border-color:#d7fa5080}
+.icon,.social i{color:var(--gold);border-color:#d7fa5060}
+.form input:focus,.form textarea:focus,.form select:focus{border-color:var(--gold);box-shadow:0 0 0 3px #d7fa5022}
+.floating-wa{background:var(--gold);color:#101509}
+.floating-wa i{color:var(--gold);background:#111809}
+:where(a,button,input,textarea,select):focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.karika-playlist{background:radial-gradient(ellipse at 85% 0,#202a24,transparent 42rem),var(--bg);min-width:0}
+.karika-playlist .ambient-two{background:#b5cafd}
+.karika-playlist .hero-note,.karika-playlist .form-card,.karika-playlist .progress-box{border-color:var(--line)}
+.karika-playlist .brand{text-decoration:none}
