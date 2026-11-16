@@ -1,23 +1,56 @@
-:root{--bg:#0a0d11;--bg2:#14191f;--text:#f8fafb;--muted:#b9c2cb;--gold:#efb363;--gold2:#efb363;--line:#ffffff2b;--gold-bright:#efb363;--gold-soft:#efb36323}
-body{font-family:Cairo,Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
-.karika-wordmark{display:inline-block;white-space:nowrap;font:800 clamp(26px,3.3vw,39px)/1 "FSP DEMO - PODIUM Sharp 4.11","Barlow Condensed","Arial Narrow",Impact,sans-serif;letter-spacing:.01em;color:#fff}
-.site-header,.site-header .nav,.site-header .menu{background:#10141a}
-.site-header .nav-cta{border-color:#efb36380;color:var(--gold);border-radius:0}
-.site-header .nav-cta:hover{background:var(--gold);color:#111508}
-.work,.follow,.services,.booking{background:radial-gradient(ellipse at 92% 2%,#1e2924,transparent 48%),#0a0d11}
-.section h1,.section h2{letter-spacing:0;color:#f8fafb}
-.kicker,.section h1 em,.section h2 em{color:var(--gold)}
-.kicker::before{background:var(--gold);box-shadow:0 0 0 4px #efb36323}
-.primary{background:var(--gold);color:#131809}
-.section .btn,.nav-cta,.topbar-link,.karika-playlist .submit-button{border-radius:0}
-.card,.service,.social,.form{border-color:var(--line)}
-.card:hover,.service:hover,.social:hover,.modal{border-color:#efb36380}
-.icon,.social i{color:var(--gold);border-color:#efb36360}
-.form input:focus,.form textarea:focus,.form select:focus{border-color:var(--gold);box-shadow:0 0 0 3px #efb36322}
-.floating-wa{background:var(--gold);color:#101509}
-.floating-wa i{color:var(--gold);background:#111809}
-:where(a,button,input,textarea,select):focus-visible{outline:2px solid var(--gold);outline-offset:4px}
-.karika-playlist{background:radial-gradient(ellipse at 85% 0,#202a24,transparent 42rem),var(--bg);min-width:0}
-.karika-playlist .ambient-two{background:#b5cafd}
-.karika-playlist .hero-note,.karika-playlist .form-card,.karika-playlist .progress-box{border-color:var(--line)}
+:root {
+  color-scheme:dark;
+  --bg:#130e09; --bg2:#21160f; --text:#fff4e4; --muted:#dfc9ad;
+  --gold:#efb363; --gold2:#efb363; --gold-bright:#efb363;
+  --line:#f5d4a440; --gold-soft:#efb36323;
+  --surface:#21160f; --surface-strong:#2a1c12; --surface-soft:#2a1c12ba;
+}
+body.karika-theme-page{font-family:Cairo,Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
+.karika-theme-page .site-header,.karika-playlist .topbar{
+  background:#170f09;border-bottom:1px solid #f9e1bb22;color:var(--text);
+}
+.karika-theme-page .header-inner,.karika-playlist .topbar{
+  direction:ltr;max-width:none;width:100%;padding-inline:clamp(24px,4vw,64px);
+  min-height:72px;gap:clamp(12px,2vw,31px);justify-content:space-between;
+}
+.karika-theme-page .site-header .brand,.karika-playlist .topbar .brand{
+  width:auto;display:inline-flex;gap:9px;align-items:center;white-space:nowrap;
+}
+.karika-wordmark{display:inline-block;white-space:nowrap;font:900 clamp(23px,3vw,36px)/1 Inter,Arial,sans-serif;letter-spacing:-.06em;color:var(--text)}
+.karika-brand-sub{color:#ecd3b0;border-left:1px solid #eed0a05c;padding-left:8px;font-weight:800;font-size:11px}
+.karika-theme-page .site-header .nav,.karika-playlist .playlist-links{margin:0;direction:rtl;color:var(--text)}
+.karika-playlist .playlist-links{display:flex;gap:clamp(10px,2.1vw,30px);font-size:13px;font-weight:800}
+.karika-playlist .playlist-links a{text-decoration:none}
+.karika-playlist .playlist-links a:hover,.karika-theme-page .nav a:hover{color:var(--gold)}
+.karika-theme-page .site-header .menu{background:#21160f;color:var(--text)}
+.karika-theme-page .site-header .nav-cta,.karika-playlist .topbar-link{
+  border:1px solid var(--line);border-radius:0;background:#20150db8;color:var(--text);
+}
+.karika-theme-page .site-header .nav-cta:hover,.karika-playlist .topbar-link:hover{background:#503014;color:var(--text)}
+.karika-theme-page .section{background:radial-gradient(ellipse at 80% 0,#51301691,transparent 52%),linear-gradient(174deg,#201209,#130e09 62%)}
+.karika-theme-page .section h1,.karika-theme-page .section h2,.karika-playlist .hero h1{
+  color:var(--text);letter-spacing:0;font-weight:900
+}
+.karika-theme-page .kicker,.karika-theme-page .section h1 em,.karika-theme-page .section h2 em{color:var(--gold)}
+.karika-theme-page .kicker::before{background:var(--gold);box-shadow:0 0 0 4px #efb36323}
+.karika-theme-page .primary{background:#fff1dc;color:#21160e}
+.karika-theme-page .primary:hover{background:#f9cc8f}
+.karika-theme-page .section .btn,.karika-playlist .submit-button,.karika-playlist .submit-btn{border-radius:0}
+.karika-theme-page :is(.card,.service,.social,.form),.karika-playlist :is(.form-card,.hero-note,.progress-box){border-color:var(--line)}
+.karika-theme-page :is(.service,.social,.form),.karika-playlist :is(.form-card,.hero-note,.progress-box){background:#22160f99}
+.karika-theme-page :is(.card,.service,.social):hover,.karika-theme-page .modal{border-color:#efb36380}
+.karika-theme-page :is(.icon,.social i){color:var(--gold);border-color:#efb36360}
+.karika-theme-page .form :is(input,textarea,select){background:#19110c;color:var(--text)}
+.karika-theme-page .form :is(input,textarea,select):focus{border-color:var(--gold);box-shadow:0 0 0 3px #efb36322}
+.karika-theme-page .footer{background:#160d08}
+.karika-theme-page .floating-wa{background:#fff1dc;color:#21160e}
+.karika-theme-page .floating-wa i{color:var(--gold);background:#21160e}
+.karika-theme-page :where(a,button,input,textarea,select,summary):focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.karika-playlist{min-width:0;background:radial-gradient(ellipse at 82% 0,#6339147d,transparent 35rem),var(--bg)!important}
+.karika-playlist .ambient-two{background:#e69853}
 .karika-playlist .brand{text-decoration:none}
+@media(max-width:700px){
+  .karika-theme-page .site-header .nav{background:#21160f;margin:0;border-radius:0;left:16px;right:16px}
+  .karika-theme-page .header-inner,.karika-playlist .topbar{min-height:65px}
+  .karika-playlist .playlist-links{display:none}
+}

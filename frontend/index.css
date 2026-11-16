@@ -255,3 +255,33 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--acid);outline-offse
   .hero-copy{padding-top:10px}
   .hero-foot{padding-top:15px}
 }
+
+/* A real dance floor and separately swept stage lasers. */
+.event-photo{animation:none}
+.event-crowd{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 53%;
+  filter:grayscale(1) sepia(.9) saturate(1.6) brightness(.82) contrast(1.15);
+  opacity:.68;pointer-events:none;
+  mask-image:linear-gradient(#000 2%,#000 72%,transparent 99%);
+}
+.stage-shade{background:linear-gradient(0deg,#130e09 1%,#130e09a8 23%,transparent 53%,#130e09b0),linear-gradient(90deg,#130e0960,transparent 56%)}
+.laser-field{position:absolute;inset:0;overflow:hidden;pointer-events:none;mix-blend-mode:screen}
+.laser-field i{position:absolute;display:block;left:var(--x);top:var(--y);width:max(120vw,1050px);height:17px;
+  transform-origin:0 50%;opacity:0;animation:laser-sweep var(--duration) ease-in-out infinite alternate;
+  animation-delay:var(--offset);filter:drop-shadow(0 0 8px #eec17a);
+  background:linear-gradient(0deg,transparent,#f0a33a30 43%,#ffc66226 57%,transparent)}
+.laser-field i::after{content:"";position:absolute;inset:48% 0 auto;height:1px;
+  background:linear-gradient(90deg,#ffd58ac8 0%,#edab5790 38%,transparent 85%)}
+.laser-field i:nth-child(1){--x:-2%;--y:23%;--a:6deg;--b:25deg;--duration:5.1s;--offset:-1.6s}
+.laser-field i:nth-child(2){--x:-2%;--y:27%;--a:-11deg;--b:22deg;--duration:7.5s;--offset:-5.4s}
+.laser-field i:nth-child(3){--x:103%;--y:19%;--a:161deg;--b:187deg;--duration:6.2s;--offset:-2.3s}
+.laser-field i:nth-child(4){--x:103%;--y:32%;--a:157deg;--b:183deg;--duration:8.8s;--offset:-4.5s}
+@keyframes laser-sweep{
+  0%{transform:rotate(var(--a));opacity:.38}
+  55%{opacity:.83}
+  100%{transform:rotate(var(--b));opacity:.53}
+}
+[data-motion="off"] .laser-field{display:none}
+@media(max-width:900px), (orientation:portrait){
+  .event-crowd{object-position:48% 50%;opacity:.63}
+}
