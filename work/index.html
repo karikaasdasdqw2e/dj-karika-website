@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090a0e"><meta name="description" content="شاهد فيديوهات أفراح وحفلات محمد كاريكا (DJ KARIKA) وفريق الكتيبة."><title>الأعمال والفيديوهات | DJ KARIKA</title>
+<link rel="canonical" href="https://djkarika.com/work/">
+<meta property="og:title" content="الأعمال والفيديوهات | DJ KARIKA">
+<meta property="og:description" content="شاهد فيديوهات أفراح وحفلات محمد كاريكا (DJ KARIKA) وفريق الكتيبة.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://djkarika.com/work/">
+<meta property="og:image" content="https://djkarika.com/assets/karika-cover.webp">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="768">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header class="header site-header" id="top">
+  <div class="container header-inner">
+    <a class="brand" href="../"><img src="../assets/logo.svg" alt="DJ KARIKA Party Planning"></a>
+    <button class="menu" id="menu" type="button" aria-label="القائمة" aria-controls="nav" aria-expanded="false">☰</button>
+    <nav class="nav" id="nav" aria-label="روابط الموقع">
+      <a href="../">الرئيسية</a>
+      <a href="../work/" aria-current="page">الأعمال</a>
+      <a href="../services/">الخدمات</a>
+      <a href="../#about">ليه كاريكا؟</a>
+      <a href="../contact/">التواصل</a>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/201114880069" target="_blank" rel="noopener noreferrer">احجز مناسبتك <span aria-hidden="true">↗</span></a>
+  </div>
+</header>
+<main>
+<section class="section work" id="work"><div class="container"><div class="section-head"><div><p class="kicker">OUR WORK / شغلنا على الأرض</p><h1>كل لقطة وراها <em>ليلة كاملة</em> من الإبهار.</h1></div><p>قف بالمؤشر على أي فيديو لمعاينة تلقائية صامتة، واضغط عليه لتشغيله بالكامل. على الموبايل اضغط الفيديو مباشرة.</p></div><div class="gallery-meta"><b>٨ فيديوهات</b></div><div class="gallery" id="gallery"></div></div></section>
+</main>
+<footer class="footer"><div class="container"><div class="footer-top"><a class="brand" href="../"><img src="../assets/logo.svg" alt="DJ KARIKA Party Planning"></a><p>تنظيم حفلات وأفراح وافتتاحات بتجهيز كامل وتنفيذ يليق بمناسبتك.</p><div class="footer-links"><a href="../work/">شغلنا</a><a href="../services/">خدماتنا</a><a href="https://wa.me/201114880069" target="_blank" rel="noopener noreferrer">الحجز على واتساب</a><a href="../booking/">تفاصيل الحجز</a></div></div><div class="copyright"><span>© <span id="year"></span> DJ KARIKA PARTY PLANNING</span></div></div></footer>
+<a class="floating-wa" target="_blank" rel="noopener" href="https://wa.me/201114880069"><i>◔</i>واتساب مباشر</a>
+<dialog class="modal" id="modal"><div class="modal-head"><b id="modalTitle">DJ KARIKA</b><button id="close" aria-label="إغلاق">×</button></div><div class="modal-body"><iframe id="frame" title="DJ KARIKA video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></dialog>
+<script src="../assets/site.js"></script>
+<script>
+const videos=[['-jir93Lx9Bg','لقطة مميزة من شغلنا','DJ KARIKA PARTY PLANNING'],['lGGJArrL00Q','أجواء ترفع الطاقة','LIVE MOMENT'],['Yp31GS0yf6g','تفاصيل تصنع فرق','EVENT PRODUCTION'],['1kon6bUAWaM','ليلة تتعمل صح','WEDDING VIBES'],['n83Z3ro5vAg','الصوت والإضاءة في مشهد واحد','LIGHT & SOUND'],['HxGq0aoxYZg','لحظة دخول تفضل في الذاكرة','THE BIG MOMENT'],['7gaIh5rhDOI','كل الناس عايشة الحدث','CELEBRATION MODE'],['C8aQNQjDEi0','ختام يليق بالمناسبة','KARIKA EXPERIENCE']];
+const gallery=document.querySelector('#gallery');gallery.innerHTML=videos.map((v,i)=>`<button class="card ${i===0?'feature':''}" type="button" data-id="${v[0]}" data-title="${v[1]}"><img loading="${i===0?'eager':'lazy'}" src="https://i.ytimg.com/vi/${v[0]}/${i===0?'maxresdefault.jpg':'hqdefault.jpg'}" onerror="this.src='https://i.ytimg.com/vi/${v[0]}/hqdefault.jpg'" alt="${v[1]}"><span class="shade"></span><span class="play">▶</span><span class="preview-tag">LIVE PREVIEW</span><span class="index">${String(i+1).padStart(2,'0')}${i===0?' / FEATURED':''}</span><span class="copy"><small>${v[2]}</small><b>${v[1]}</b><span>شاهد الفيديو ↗</span></span></button>`).join('');
+let previewCard=null;const canHover=window.matchMedia('(hover:hover) and (pointer:fine)');function stopPreview(card=previewCard){if(!card)return;card.querySelector('.preview')?.remove();card.classList.remove('is-previewing');if(card===previewCard)previewCard=null}function startPreview(card){if(!canHover.matches||previewCard===card)return;stopPreview();const p=document.createElement('iframe');p.className='preview';p.tabIndex=-1;p.setAttribute('aria-hidden','true');p.src=`https://www.youtube-nocookie.com/embed/${card.dataset.id}?autoplay=1&mute=1&loop=1&playlist=${card.dataset.id}&controls=0&playsinline=1&rel=0&modestbranding=1`;p.allow='autoplay; encrypted-media; picture-in-picture';card.prepend(p);card.classList.add('is-previewing');previewCard=card}gallery.querySelectorAll('.card').forEach(c=>{c.addEventListener('mouseenter',()=>startPreview(c));c.addEventListener('mouseleave',()=>stopPreview(c));c.addEventListener('focus',()=>startPreview(c));c.addEventListener('blur',()=>stopPreview(c))});
+const modal=document.querySelector('#modal'),frame=document.querySelector('#frame'),title=document.querySelector('#modalTitle');gallery.addEventListener('click',e=>{const c=e.target.closest('.card');if(!c)return;stopPreview(c);title.textContent=c.dataset.title;frame.src=`https://www.youtube-nocookie.com/embed/${c.dataset.id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;modal.showModal()});document.querySelector('#close').onclick=()=>modal.close();modal.addEventListener('close',()=>frame.src='');
+</script>
+</body>
+</html>
