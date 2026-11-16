@@ -3,7 +3,9 @@ import { createRoot } from 'react-dom/client';
 import { ArrowUpRight, AudioLines, Music2, Pause, Play, X } from 'lucide-react';
 import './index.css';
 
-const videoUrl = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260606_154941_df1a96e1-a06f-450c-bd02-d863414cc1a0.mp4';
+const trackId = 'wFwkPl7iSNI';
+const musicUrl = 'https://music.youtube.com/watch?v=wFwkPl7iSNI&feature=gws_kp_track';
+const playerUrl = 'https://www.youtube-nocookie.com/embed/' + trackId + '?autoplay=1&playsinline=1&rel=0';
 const bookingUrl = 'https://wa.me/201114880069';
 const navigation = [
   ['الأعمال', './work/'], ['الخدمات', './services/'], ['بلاي ليست فرحك', './playlist/'],
@@ -17,7 +19,8 @@ const pads = [[11, 75], [15, 75], [19, 75], [23, 75], [75, 75], [79, 75], [83, 7
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [motion, setMotion] = useState(() => !matchMedia('(prefers-reduced-motion: reduce)').matches);
-  const video = useRef<HTMLVideoElement>(null);
+  const [musicOpen, setMusicOpen] = useState(false);
+  const musicButton = useRef<HTMLButtonElement>(null);
   const menu = useRef<HTMLDialogElement>(null);
   const menuButton = useRef<HTMLButtonElement>(null);
 
@@ -28,10 +31,6 @@ function App() {
     return () => preference.removeEventListener('change', updateMotion);
   }, []);
 
-  useEffect(() => {
-    if (motion) video.current?.play().catch(() => {});
-    else video.current?.pause();
-  }, [motion]);
 
   useEffect(() => {
     if (menuOpen && !menu.current?.open) menu.current?.showModal();
@@ -78,8 +77,7 @@ function App() {
 
   return (
     <main className="hero relative isolate overflow-hidden text-white" data-motion={motion ? 'on' : 'off'}>
-      <video className="stage-video pointer-events-none absolute inset-0 h-full w-full object-cover" ref={video}
-        src={videoUrl} preload={motion ? 'auto' : 'none'} autoPlay={motion} muted loop playsInline aria-hidden="true" />
+      <div className="stage-light" aria-hidden="true" />
       <div className="stage-shade absolute inset-0" aria-hidden="true" />
       <header className="site-nav relative z-20 flex items-center justify-between gap-4 px-6 py-4 sm:px-10 lg:px-16 lg:py-5" dir="ltr">
         <a href="./" className="wordmark inline-flex items-center gap-3" aria-label="دي جي كاريكا الرئيسية">
@@ -128,6 +126,24 @@ function App() {
           <Music2 size={17} aria-hidden="true" /> بلاي ليست فرحك <span aria-hidden="true" />
         </a>
       </div>
+      <button ref={musicButton} className="music-trigger" type="button" aria-controls="music-player"
+        aria-expanded={musicOpen} onClick={() => setMusicOpen(open => !open)}>
+        <Music2 size={16} aria-hidden="true" /> {musicOpen ? 'إغلاق المزيكا' : 'شغّل المزيكا'}
+      </button>
+      {musicOpen && (
+        <aside className="music-player" id="music-player" aria-label="مشغّل المزيكا">
+          <div className="music-heading">
+            <strong>اسمع التراك</strong>
+            <button type="button" aria-label="إغلاق مشغّل المزيكا" onClick={() => {
+              setMusicOpen(false);
+              musicButton.current?.focus();
+            }}><X size={20} aria-hidden="true" /></button>
+          </div>
+          <iframe src={playerUrl} title="مشغّل التراك من يوتيوب" allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />
+          <a href={musicUrl} target="_blank" rel="noopener noreferrer">افتح التراك على YouTube Music <ArrowUpRight size={14} aria-hidden="true" /></a>
+        </aside>
+      )}
       <button className="motion-button" type="button" aria-label={motion ? 'أوقف حركة الخلفية' : 'شغّل حركة الخلفية'}
         title={motion ? 'أوقف الحركة' : 'شغّل الحركة'} onClick={() => setMotion(!motion)}>
         {motion ? <Pause size={14} /> : <Play size={14} />}

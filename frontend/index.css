@@ -9,7 +9,15 @@ button{cursor:pointer}
 a:focus-visible,button:focus-visible{outline:2px solid var(--acid);outline-offset:4px}
 .font-podium{font-family:"FSP DEMO - PODIUM Sharp 4.11","Barlow Condensed","Arial Narrow",Impact,sans-serif;font-weight:800}
 .hero{min-height:100svh;display:flex;flex-direction:column;background:#0a0d11}
-.stage-video{opacity:.8}
+ .stage-light {
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse at 74% 48%,#345361 0%,#192a35 27%,transparent 64%),
+    radial-gradient(ellipse at 93% 24%,#39433a 0%,transparent 45%),#0a0d11;
+}
+.stage-light::after {
+  content:""; position:absolute; inset:0; opacity:.55;
+  background:conic-gradient(from 175deg at 83% 1%,transparent 0deg,#c2edff25 14deg,transparent 27deg,#eff6ba14 40deg,transparent 53deg);
+}
 .stage-shade{background:linear-gradient(90deg,#080a0ef7 0%,#080b10c9 35%,#0a10172c 74%),linear-gradient(0deg,#07090de0,transparent 45%,#080a0ed0);pointer-events:none}
 .site-nav{min-height:66px;font-size:13px;font-weight:700}
 .site-nav nav a:hover,.mobile-menu nav a:not(.action):hover{color:var(--acid)}
@@ -38,11 +46,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--acid);outline-offse
 .playlist span{width:clamp(35px,11vw,184px);height:1px;background:linear-gradient(90deg,transparent,var(--acid))}
 .playlist:hover{color:var(--acid)}
 .visual{position:absolute;inset:0 0 0 30%;pointer-events:none}
-.duo{position:absolute;z-index:2;bottom:0;right:-1.8%;width:98%;height:94%;object-fit:contain;object-position:right bottom;filter:drop-shadow(0 0 5px #c8f6ff66)}
+.duo{position:absolute;z-index:2;bottom:16%;right:3%;width:86%;height:76%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 0 5px #c8f6ff66);transform-origin:50% 90%;animation:portrait-drift 7.5s ease-in-out infinite}
 .portrait-halo,.portrait-sweep{position:absolute;z-index:1;inset:12% 0 4%;pointer-events:none}
 .portrait-halo{background:radial-gradient(ellipse at 38% 30%,#d7fa5047,transparent 52%),radial-gradient(ellipse at 73% 31%,#dae9ff95,transparent 42%);filter:blur(22px);opacity:.56;animation:halo 4.2s ease-in-out infinite}
 .portrait-sweep{background:conic-gradient(from 215deg at 65% 0%,transparent 0deg,#e8f8ff21 23deg,transparent 39deg,#e0fa5d23 56deg,transparent 70deg);transform-origin:65% top;animation:shine 8s ease-in-out infinite}
-.controller{position:absolute;z-index:3;bottom:-33px;right:-2%;width:min(67vw,950px);line-height:0}
+.controller{position:absolute;z-index:3;bottom:2%;right:11%;width:min(37vw,520px,53svh);line-height:0}
 .controller img{display:block;width:100%;aspect-ratio:2.65;object-fit:fill;filter:drop-shadow(0 12px 24px #0009)}
 .jog{position:absolute;top:35%;width:19.5%;height:30%;border:1px solid #e5ff94cc;border-radius:50%;box-shadow:0 0 11px #d7fa5088,inset 0 0 12px #d7fa5055;animation:jog 2.7s ease-in-out infinite}
 .jog-left{left:9.6%}.jog-right{right:9.6%;animation-delay:-1.2s}
@@ -51,7 +59,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--acid);outline-offse
 .levels span{flex:1;height:calc(var(--height) * 2%);background:linear-gradient(#fffbd1,var(--acid));box-shadow:0 0 7px #d7fa50;transform-origin:bottom;animation:meter calc(.84s + var(--i) * .07s) ease-in-out calc(var(--i) * -110ms) infinite alternate}
 .pad{position:absolute;left:calc(var(--x) * 1%);top:calc(var(--y) * 1%);width:3.3%;height:3.7%;border-radius:15%;background:#e2fc54;box-shadow:0 0 10px #e0fc4d;opacity:.28;animation:pads calc(1.9s + var(--i) * .14s) ease-in-out calc(var(--i) * -.24s) infinite}
 .motion-button{z-index:12;position:absolute;inset-inline-start:15px;bottom:13px;padding:7px;background:#10151ce3;color:white;border:1px solid #ffffff4d;border-radius:5px}
-[data-motion="off"] .portrait-halo,[data-motion="off"] .portrait-sweep,[data-motion="off"] .jog,[data-motion="off"] .jog::after,[data-motion="off"] .levels span,[data-motion="off"] .pad{animation-play-state:paused}
+[data-motion="off"] .duo,[data-motion="off"] .portrait-halo,[data-motion="off"] .portrait-sweep,[data-motion="off"] .jog,[data-motion="off"] .jog::after,[data-motion="off"] .levels span,[data-motion="off"] .pad{animation-play-state:paused}
+@keyframes portrait-drift{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(3px,-7px,0) scale(1.012)}}
 @keyframes halo{0%,100%{opacity:.42;transform:scale(.97)}47%{opacity:.91;transform:scale(1.04)}}
 @keyframes shine{0%,100%{opacity:.28;transform:rotate(-5deg)}50%{opacity:.85;transform:rotate(9deg)}}
 @keyframes jog{0%,100%{opacity:.24}43%{opacity:.9}}
@@ -86,10 +95,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--acid);outline-offse
   .hero-kicker{margin-bottom:8px}
   .hero-copy h1{font-size:clamp(56px,min(17.5vw,11svh),95px)}
   .hero-names{margin-top:7px}
-  .visual{position:relative;inset:auto;margin-top:auto;min-height:clamp(224px,36svh,435px)}
-  .duo{height:110%;width:109%;right:-4%;bottom:5%;object-position:center bottom}
+  .visual{position:relative;inset:auto;margin-top:auto;min-height:clamp(240px,39svh,435px)}
+  .duo{height:82%;width:95%;right:2.5%;bottom:19%;object-position:center bottom}
   .controller img{aspect-ratio:2.95}
-  .controller{width:min(94%,530px);right:50%;bottom:1%;transform:translateX(50%)}
+  .controller{width:min(65%,330px,40svh);right:50%;bottom:1%;transform:translateX(50%)}
   .portrait-halo,.portrait-sweep{inset:-10% 0 1%}
   .hero-foot{margin-top:1px}
   .hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -100,7 +109,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--acid);outline-offse
 @media(max-width:767px) and (max-height:710px){
   .site-nav{min-height:52px;padding-block:10px}
   .hero-copy h1{font-size:clamp(51px,10svh,72px)}
-  .visual{min-height:clamp(194px,33svh,320px)}
+  .visual{min-height:clamp(210px,34svh,320px)}
   .hero-foot{padding-bottom:13px}
 }
 @layer utilities {
@@ -119,3 +128,20 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--acid);outline-offse
   *,*::before,*::after{animation:none!important;transition:none!important}
   .animate-fade-up,.animate-fade-up-delay-1,.animate-fade-up-delay-2,.animate-fade-up-delay-3,.animate-fade-up-delay-4{opacity:1}
 }
+
+.music-trigger{
+  min-height:40px;display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  position:absolute;bottom:13px;inset-inline-start:52px;z-index:12;
+  padding:5px 11px;border:1px solid #d7fa5070;background:#10151cee;color:var(--acid);
+  border-radius:5px;font-size:12px;font-weight:900;
+}
+.music-trigger:hover{background:#26321f}
+.music-player{
+  z-index:25;position:fixed;inset-inline-start:12px;bottom:61px;width:min(370px,calc(100vw - 24px));
+  padding:10px;background:#121820;border:1px solid #d7fa5070;border-radius:8px;box-shadow:0 14px 45px #000a;
+}
+.music-heading{display:flex;justify-content:space-between;align-items:center;padding-bottom:7px}
+.music-heading button{padding:4px}
+.music-player iframe{display:block;width:100%;height:200px;border:0;background:#05070b}
+.music-player a{color:var(--acid);display:inline-flex;align-items:center;gap:7px;font-size:12px;padding-top:8px}
+@media(max-width:767px){.music-trigger{bottom:6px;inset-inline-start:45px;min-height:34px}}
