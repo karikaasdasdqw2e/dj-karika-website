@@ -9,15 +9,6 @@ button{cursor:pointer}
 a:focus-visible,button:focus-visible{outline:2px solid var(--acid);outline-offset:4px}
 .font-podium{font-family:"FSP DEMO - PODIUM Sharp 4.11","Barlow Condensed","Arial Narrow",Impact,sans-serif;font-weight:800}
 .hero{min-height:100svh;display:flex;flex-direction:column;background:#0a0d11}
- .stage-light {
-  position:absolute; inset:0;
-  background:radial-gradient(ellipse at 74% 48%,#345361 0%,#192a35 27%,transparent 64%),
-    radial-gradient(ellipse at 93% 24%,#39433a 0%,transparent 45%),#0a0d11;
-}
-.stage-light::after {
-  content:""; position:absolute; inset:0; opacity:.55;
-  background:conic-gradient(from 175deg at 83% 1%,transparent 0deg,#c2edff25 14deg,transparent 27deg,#eff6ba14 40deg,transparent 53deg);
-}
 .stage-shade{background:linear-gradient(90deg,#080a0ef7 0%,#080b10c9 35%,#0a10172c 74%),linear-gradient(0deg,#07090de0,transparent 45%,#080a0ed0);pointer-events:none}
 .site-nav{min-height:66px;font-size:13px;font-weight:700}
 .site-nav nav a:hover,.mobile-menu nav a:not(.action):hover{color:var(--acid)}
@@ -50,23 +41,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--acid);outline-offse
 .portrait-halo,.portrait-sweep{position:absolute;z-index:1;inset:12% 0 4%;pointer-events:none}
 .portrait-halo{background:radial-gradient(ellipse at 38% 30%,#d7fa5047,transparent 52%),radial-gradient(ellipse at 73% 31%,#dae9ff95,transparent 42%);filter:blur(22px);opacity:.56;animation:halo 4.2s ease-in-out infinite}
 .portrait-sweep{background:conic-gradient(from 215deg at 65% 0%,transparent 0deg,#e8f8ff21 23deg,transparent 39deg,#e0fa5d23 56deg,transparent 70deg);transform-origin:65% top;animation:shine 8s ease-in-out infinite}
-.controller{position:absolute;z-index:3;bottom:2%;right:11%;width:min(37vw,520px,53svh);line-height:0}
-.controller img{display:block;width:100%;aspect-ratio:2.65;object-fit:fill;filter:drop-shadow(0 12px 24px #0009)}
-.jog{position:absolute;top:35%;width:19.5%;height:30%;border:1px solid #e5ff94cc;border-radius:50%;box-shadow:0 0 11px #d7fa5088,inset 0 0 12px #d7fa5055;animation:jog 2.7s ease-in-out infinite}
-.jog-left{left:9.6%}.jog-right{right:9.6%;animation-delay:-1.2s}
-.jog::after{content:"";position:absolute;inset:-2%;border:1px solid transparent;border-top-color:#f5ffbc;border-radius:50%;animation:spin 3.4s linear infinite}
-.levels{position:absolute;display:flex;align-items:end;gap:4%;height:7%;width:23%;left:38.5%;top:18%;padding:1px 4%}
-.levels span{flex:1;height:calc(var(--height) * 2%);background:linear-gradient(#fffbd1,var(--acid));box-shadow:0 0 7px #d7fa50;transform-origin:bottom;animation:meter calc(.84s + var(--i) * .07s) ease-in-out calc(var(--i) * -110ms) infinite alternate}
-.pad{position:absolute;left:calc(var(--x) * 1%);top:calc(var(--y) * 1%);width:3.3%;height:3.7%;border-radius:15%;background:#e2fc54;box-shadow:0 0 10px #e0fc4d;opacity:.28;animation:pads calc(1.9s + var(--i) * .14s) ease-in-out calc(var(--i) * -.24s) infinite}
 .motion-button{z-index:12;position:absolute;inset-inline-start:15px;bottom:13px;padding:7px;background:#10151ce3;color:white;border:1px solid #ffffff4d;border-radius:5px}
-[data-motion="off"] .duo,[data-motion="off"] .portrait-halo,[data-motion="off"] .portrait-sweep,[data-motion="off"] .jog,[data-motion="off"] .jog::after,[data-motion="off"] .levels span,[data-motion="off"] .pad{animation-play-state:paused}
-@keyframes portrait-drift{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(3px,-7px,0) scale(1.012)}}
 @keyframes halo{0%,100%{opacity:.42;transform:scale(.97)}47%{opacity:.91;transform:scale(1.04)}}
 @keyframes shine{0%,100%{opacity:.28;transform:rotate(-5deg)}50%{opacity:.85;transform:rotate(9deg)}}
-@keyframes jog{0%,100%{opacity:.24}43%{opacity:.9}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes meter{0%{transform:scaleY(.32)}56%{transform:scaleY(1)}100%{transform:scaleY(.64)}}
-@keyframes pads{0%,70%,100%{opacity:.2}40%{opacity:.92}}
 .mobile-menu{position:fixed;inset:0;max-width:none;max-height:none;width:100%;height:100%;padding:0;margin:0;border:0;overflow:auto;background:#080a0ff8;color:white}
 .mobile-menu::backdrop{background:#080a0fe0;backdrop-filter:blur(6px)}
 .mobile-menu[open]{animation:fade-in .4s ease both}
@@ -97,9 +74,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--acid);outline-offse
   .hero-names{margin-top:7px}
   .visual{position:relative;inset:auto;margin-top:auto;min-height:clamp(240px,39svh,435px)}
   .duo{height:82%;width:95%;right:2.5%;bottom:19%;object-position:center bottom}
-  .controller img{aspect-ratio:2.95}
-  .controller{width:min(65%,330px,40svh);right:50%;bottom:1%;transform:translateX(50%)}
-  .portrait-halo,.portrait-sweep{inset:-10% 0 1%}
+      .portrait-halo,.portrait-sweep{inset:-10% 0 1%}
   .hero-foot{margin-top:1px}
   .hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
   .hero-actions .action{font-size:12px;padding-inline:7px}
@@ -145,3 +120,86 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--acid);outline-offse
 .music-player iframe{display:block;width:100%;height:200px;border:0;background:#05070b}
 .music-player a{color:var(--acid);display:inline-flex;align-items:center;gap:7px;font-size:12px;padding-top:8px}
 @media(max-width:767px){.music-trigger{bottom:6px;inset-inline-start:45px;min-height:34px}}
+
+/* Amber homepage */
+:root{--acid:#efb363;--ink:#130e09;--light:#fff4e4;--line:#f5d4a453}
+.hero{background:#130e09;min-height:100svh}
+.stage-light{position:absolute;inset:0;overflow:hidden;background:#130e09;pointer-events:none}
+.event-photo,.event-haze,.event-beams{position:absolute;inset:-4%;pointer-events:none}
+.event-photo{background-position:center 38%;background-size:cover;animation:event-drift 22s ease-in-out infinite alternate;opacity:.89}
+.event-beams{background:conic-gradient(from 176deg at 76% 3%,transparent 0deg,#eba75422 19deg,transparent 31deg,#ffd08b24 46deg,transparent 61deg);animation:beam-drift 13s ease-in-out infinite alternate;transform-origin:76% 3%}
+.event-haze{background:radial-gradient(ellipse at 76% 50%,#e59c4c36,transparent 63%);animation:haze-drift 9s ease-in-out infinite alternate}
+.stage-shade{background:linear-gradient(0deg,#130e09 2%,#130e0970 46%,transparent 70%,#130e09b0),linear-gradient(90deg,#130e0980,transparent 65%);z-index:0}
+.site-nav{padding-block:14px;border-bottom:1px solid #f9e1bb1a;color:var(--light)}
+.wordmark .font-podium,.mobile-menu .wordmark{font:900 clamp(23px,3vw,36px)/1 Inter,Arial,sans-serif;letter-spacing:-.06em}
+.brand-sub{color:#ecd3b0}
+.action-primary{color:#21160e;background:#fff1dc}
+.action-primary:hover{background:#f9cc8f}
+.action-outline{color:var(--light);background:#20150db8}
+.hero-copy h1{font:900 clamp(56px,8.1vw,130px)/.91 Inter,Arial,sans-serif;letter-spacing:-.073em;color:var(--light)}
+.hero-kicker{color:#efbc7c}
+.hero-foot{padding-bottom:27px}
+.hero-copy,.hero-foot{width:fit-content;max-width:100%;z-index:5}
+.hero-names{color:#f0d8bb}
+.visual{position:absolute;inset:auto 6% 4% auto;width:min(72vw,115svh,1020px);aspect-ratio:3/2;z-index:4;pointer-events:auto}
+.duo{inset:0;width:100%;height:100%;object-fit:contain;object-position:center;mask-image:linear-gradient(#000 68%,transparent 97%);filter:drop-shadow(0 0 7px #ffad4356)}
+.portrait-halo{inset:16% 0;filter:none;background:none;border:1px solid #f7ba6ca6;border-radius:50%;box-shadow:0 0 30px #ffb26730,inset 0 0 24px #ffb26728}
+.portrait-control{position:absolute;inset:0;z-index:3}
+.portrait-hit{position:absolute;left:var(--face-left);top:8%;width:30%;height:65%;border-radius:50%;pointer-events:auto}
+.portrait-essam{--face-left:17%}
+.portrait-mohamed{--face-left:54%}
+.portrait-hit:focus-visible{outline:2px solid #ffcb82;outline-offset:5px}
+.visual[data-profile="essam"] .portrait-essam .portrait-hit,.visual[data-profile="mohamed"] .portrait-mohamed .portrait-hit{
+  box-shadow:0 0 24px 4px #ffb65f26;animation:portrait-glint 2.3s ease both;
+}
+.portrait-socials[hidden]{display:none}
+.portrait-socials{position:absolute;top:29%;display:grid;gap:8px;pointer-events:auto}
+.portrait-essam .portrait-socials{left:1%}
+.portrait-mohamed .portrait-socials{right:-4%}
+.portrait-socials a{display:flex;align-items:center;gap:8px;min-height:42px;padding:6px 11px;
+  background:#23170eef;border:1px solid #f1aa57ad;border-radius:50px;color:#fff1de;
+  box-shadow:0 0 15px #ffad4338;font-size:12px;font-weight:800;animation:link-reveal .3s ease both}
+.portrait-socials a:nth-child(2){animation-delay:.045s}
+.portrait-socials a:nth-child(3){animation-delay:.09s}
+.portrait-socials a:nth-child(4){animation-delay:.135s}
+.portrait-socials a:hover{background:#503013}
+.gold-logo{position:absolute;z-index:2;width:42%;max-width:390px;right:0;bottom:-2%;object-fit:contain;filter:drop-shadow(0 0 18px #e3914a53)}
+.music-trigger{color:var(--light);background:#20150df0;border-color:var(--line)}
+.music-player{width:min(285px,calc(100vw - 24px));background:#22170f;border-color:var(--line)}
+.motion-button{background:#20150df0}
+.mobile-menu,.about-dialog{background:#1a120c}
+[data-motion="off"] :is(.duo,.portrait-halo,.event-photo,.event-beams,.event-haze,.portrait-hit,.portrait-socials a){animation:none}
+@keyframes event-drift{from{transform:scale(1.02) translate3d(-.8%,0,0)}to{transform:scale(1.10) translate3d(.8%,-.5%,0)}}
+@keyframes beam-drift{from{transform:rotate(-3deg);opacity:.42}to{transform:rotate(4deg);opacity:.84}}
+@keyframes haze-drift{from{transform:translate3d(-1%,1%,0)}to{transform:translate3d(4%,-1%,0)}}
+@keyframes portrait-glint{from{box-shadow:0 0 9px 1px #ffd4940a}45%{box-shadow:0 0 31px 3px #ffb65f60}to{box-shadow:0 0 18px 1px #ffb65f28}}
+@keyframes link-reveal{from{opacity:0;transform:translateY(7px) scale(.96)}to{opacity:1;transform:none}}
+@media(max-width:900px), (orientation:portrait){
+  .hero{padding-bottom:53px}
+  .site-nav{order:-2}
+  .visual{order:-1;position:relative;inset:auto;width:min(100%,651px);margin:clamp(10px,3.4vh,34px) auto 0;aspect-ratio:1.39;min-height:0}
+  .hero-copy,.hero-foot{width:100%;margin:0;text-align:center}
+  .hero-copy{padding-top:4px}
+  .hero-copy h1{font-size:clamp(48px,12vw,100px)}
+  .hero-names,.playlist{margin-inline:auto}
+  .hero-foot{padding-top:12px;padding-bottom:0}
+  .hero-actions{display:flex;justify-content:center}
+  .duo{height:90%;mask-image:linear-gradient(#000 69%,transparent 97%)}
+  .portrait-hit{height:54%}
+  .portrait-socials,.portrait-essam .portrait-socials,.portrait-mohamed .portrait-socials{inset:57% 5% auto;display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
+  .portrait-socials[hidden]{display:none}
+  .portrait-socials a{min-height:34px;padding:4px 7px;font-size:10px;gap:3px}
+  .portrait-socials a svg{width:13px;height:13px}
+  .gold-logo{width:44%;right:28%;bottom:0}
+  .music-trigger{bottom:7px}
+}
+@media(max-width:400px){.visual{aspect-ratio:1.27}.portrait-socials a{min-height:36px}}
+@media(max-height:570px) and (min-width:901px){.hero-copy h1{font-size:clamp(49px,14svh,91px)}}
+
+.portrait-hint{display:none}
+@media(hover:none){
+  .portrait-hint{position:absolute;display:block;bottom:0;left:50%;transform:translateX(-50%);white-space:nowrap;
+    padding:4px 8px;border:1px solid #f1aa5794;border-radius:50px;background:#20150de3;
+    color:#fff1de;font-size:10px;font-weight:800}
+  .visual[data-profile] .portrait-hint{display:none}
+}
